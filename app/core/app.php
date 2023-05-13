@@ -6,9 +6,6 @@ Class App extends Controller {
     private $params = [];
 
     public function __construct() {
-        $db = new Database();
-        $buses = $db->read("Select * from buses");
-        show($buses);
         $url = $this->slitURL();
         $this->router($url);
     }
