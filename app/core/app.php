@@ -6,6 +6,9 @@ Class App extends Controller {
     private $params = [];
 
     public function __construct() {
+        $db = new Database();
+        $buses = $db->read("Select * from buses");
+        show($buses);
         $url = $this->slitURL();
         $this->router($url);
     }
@@ -29,12 +32,11 @@ Class App extends Controller {
                     unset($url[1]);
                 }
             }
-    
+
+            $this->params = array_values($url);
             call_user_func_array([$this->controller, $this->method], $this->params);
         } else {
             $this->view("404");
         }
-    
-        $this->params = array_values($url);
     }
 }

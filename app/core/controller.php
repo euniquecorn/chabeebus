@@ -9,9 +9,12 @@ Class Controller {
         }
     }
 
-    protected function show($data) {
-        echo "<pre>";
-            print_r($data);
-        echo "</pre>";
+    protected function loadModel($model) {
+        if (file_exists("../app/models/". $model .".php")) {
+            include "../app/models/". $model .".php";
+            return $model = new $model(); 
+        }
+
+        return false;
     }
 }
