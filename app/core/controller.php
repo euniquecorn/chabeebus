@@ -1,11 +1,11 @@
 <?php
 
 Class Controller {
-    protected function view($view) {
-        if (file_exists("../app/views/". $view .".php")) {
-            include "../app/views/". $view .".php"; 
+    protected function view($data = []) {
+        if (file_exists("../app/views/". strtolower($data['title']) .".phtml")) {
+            include "../app/views/". strtolower($data['title']) .".phtml"; 
         } else {
-            include "../app/views/404.php";
+            include "../app/views/404.phtml";
         }
     }
 
