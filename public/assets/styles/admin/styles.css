@@ -1,6 +1,6 @@
 .admin .content {
     overflow: auto;
-    height: calc(100vh - 52rem)
+    height: calc(100vh - 37rem)
 }
 
 .admin .content .card {
