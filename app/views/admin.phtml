@@ -1,3 +1,26 @@
-<div class="container">
-    <h1>This is <?= show($data)  ?></h1>
+<div class="admin container my-5">
+    <div class="container content row">
+        <div class="col-4">
+            <div class="card p-3" onclick="goto('buses')">
+                <div class="card-body row">
+                    <div class="col-8"><h1>Buses</h1></div>
+                    <div class="col-4"><h1 class="text-end">4</h1></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card p-3" onclick="goto('reservations')">
+                <div class="card-body row">
+                    <div class="col-8"><h1>Reservations</h1></div>
+                    <div class="col-4"><h1 class="text-end">10</h1></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function goto(location) {
+        document.location = `/chabeebus/public/${location}`;
+    }
+</script>

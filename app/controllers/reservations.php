@@ -26,5 +26,4 @@ Class Reservations extends Controller {
         $urlArray = splitURL();
         show($urlArray);
     }
-
 }
