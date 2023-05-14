@@ -6,11 +6,11 @@ Class App extends Controller {
     private $params = [];
 
     public function __construct() {
-        $url = $this->slitURL();
+        $url = $this->splitURL();
         $this->router($url);
     }
 
-    private function slitURL() {
+    private function splitURL() {
         $url = isset($_GET['url']) ? $_GET['url'] : "home";
         return explode("/", filter_var(trim($url, "/"), FILTER_SANITIZE_URL));
     }

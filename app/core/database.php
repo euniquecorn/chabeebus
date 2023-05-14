@@ -51,4 +51,16 @@ Class Database {
             return false;
         }
     }
+
+    public function remove($query) {
+        $db = $this->connect();
+        $stm = $db->prepare($query);
+        $check = $stm->execute($data);
+
+        if($check) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
