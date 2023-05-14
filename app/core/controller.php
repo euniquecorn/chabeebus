@@ -7,7 +7,7 @@ Class Controller {
             $page_title = 'ChabeeBus'. "-" .$data['page_title'];
         }
 
-        if (file_exists("../app/views/". strtolower($data['title']) .".phtml")) {
+        if (isset($data['title']) && file_exists("../app/views/". strtolower($data['title']) .".phtml")) {
             include "../app/views/". strtolower($data['title']) .".phtml"; 
         } else {
             include "../app/views/404.phtml";

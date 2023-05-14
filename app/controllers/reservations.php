@@ -1,11 +1,11 @@
 <?php
-Class Admin extends Controller {
+Class Reservations extends Controller {
     function index() {
         $header['title'] = 'common/header-admin';
         $this->view($header);
         
         $data['page_title'] = "Admin";
-        $data['title'] = 'admin';
+        $data['title'] = 'reservations';
         $this->view($data);
 
         $footer['title'] = 'common/footer-admin';

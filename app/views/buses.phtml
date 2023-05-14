@@ -1,0 +1,53 @@
+<section class="content">
+        <div class="container">
+            <?php if (is_array($data['buses'])) : ?>
+                <?php foreach ($data['buses'] as $bus) : ?>
+                        <?php echo '<div class="card bg-light bus-item mb-3" onclick="showTable('. $bus->bus_number .')">' ?>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-9 p-5">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="col-7"><strong>Bus No: </strong></span>
+                                                <span class="col-5"><?= $bus->bus_number ?></span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="col-7"><strong>Location:</strong></span>
+                                                <span class="col-5">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="col-7"><strong>Available Seats: </strong></span>
+                                                <span class="col-5">15/20</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="col-4"><strong>Route:</strong></span>
+                                                <span class="col-8">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <span class="col-4"><strong>Driver: </strong></span>
+                                                <span class="col-4">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <span class="col-4"><strong>Conductor: </strong></span>
+                                                <span class="col-4">test</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="img-container">
+                                            <?php echo '<img src="'. $bus->busImage .'" alt="bus-image">' ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </section>
