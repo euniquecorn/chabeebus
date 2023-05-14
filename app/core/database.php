@@ -22,6 +22,7 @@ Class Database {
             }
         } else {
             $check = $stm->execute($data);
+            show($check);
         }
 
         if($check) {
