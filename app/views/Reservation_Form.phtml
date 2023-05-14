@@ -1,5 +1,8 @@
  <!-- booking section starts -->
- <?php $schedule = $data['schedule'];?>
+ <?php 
+    $schedule = $data['schedule'];
+    $availableSeats = $data['availableSeats'];
+ ?>
  <section class="booking">
             <h1 class="heading title">Reservation Form</h1>
 
@@ -28,20 +31,30 @@
                     </div>
                     
                     <div class="inputBox">
-                            <span>Arrival :</span>
-                            <input type="time" value="<?= $schedule->arrival_time ?>" name="arrival" readonly>
+                        <span>Arrival :</span>
+                        <input type="time" value="<?= $schedule->arrival_time ?>" name="arrival" readonly>
                     </div>
-                   
                     <div class="inputBox">
-                        <span>Seat Number :</span>
-                        <input type="number" name="seatNumber">
+                        <div class="mb-2">Seat Number:</div>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Seat Number</option>
+                            <?php foreach ($availableSeats as $value) : ?>
+                                <option value=" <?= $value ?>"> <?= $value ?> </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
-
-                    <div class="inputBox"></div>
-                    <div class="inputBox"></div>
-                
+                    
+                    <!-- <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div> -->
 
                 </div>
+                <br>
                 <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
             </form> 
         </section>
