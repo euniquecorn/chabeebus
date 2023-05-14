@@ -1,4 +1,5 @@
  <!-- booking section starts -->
+ <?php $schedule = $data['schedule'];?>
  <section class="booking">
             <h1 class="heading title">Reservation Form</h1>
 
@@ -8,34 +9,29 @@
 
                     <div class="inputBox">
                         <span>Date :</span>
-                        <input type="date" name="reserveDate" value="<?php  $date ?>" readonly>
+                        <input type="date" name="reserveDate" value="<?= $data['date'] ?>" readonly>
                     </div>
 
                     <div class="inputBox">
                             <span>Bus # :</span>
-                            <input type="number" placeholder="Bus number" name="busNo" readonly>
+                            <input type="number" value="<?= $schedule->bus_number ?>" name="busNo" readonly>
                     </div>
 
                     <div class="inputBox">
                             <span>Location :</span>
-                            <input type="text" placeholder="Enter location" name="location" readonly>
+                            <input type="text" value = "<?= $schedule->location ?> " name="location" readonly>
                     </div>
                     
                     <div class="inputBox">
                             <span>Departure :</span>
-                            <input type="time" placeholder="Departure Time" name="departure" readonly>
+                            <input type="time" value="<?= $schedule->dept_time ?>" name="departure" readonly>
                     </div>
                     
                     <div class="inputBox">
                             <span>Arrival :</span>
-                            <input type="time" placeholder="Arrival Time" name="arrival" readonly>
+                            <input type="time" value="<?= $schedule->arrival_time ?>" name="arrival" readonly>
                     </div>
                    
-                    <div class="inputBox">
-                            <span>Arrival :</span>
-                            <input type="time" placeholder="Arrival Time" name="arrival" readonly>
-                    </div>
-
                     <div class="inputBox">
                         <span>Seat Number :</span>
                         <input type="number" name="seatNumber">
