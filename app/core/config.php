@@ -22,3 +22,5 @@ if (DEBUG) {
 } else {
     ini_set("display_error", 0);
 }
+
+define('TITLE', 'ChabeeBus');
