@@ -2,8 +2,8 @@
     $reservations_model = $this->loadModel('ReservationsModel');
     $reservations_model->init();
 ?>
-<section class="content">
-    <div class="container">
+<section class="admin container">
+    <div class="content">
         <?php if (is_array($data['buses'])) : ?>
             <?php foreach ($data['buses'] as $bus) : ?>
                 <div class="card bg-light bus-item mb-3">
