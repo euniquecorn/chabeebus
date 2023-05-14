@@ -1,4 +1,4 @@
-.admin .content {
+.admin .content, .home .content {
     overflow: auto;
     height: calc(100vh - 37rem)
 }

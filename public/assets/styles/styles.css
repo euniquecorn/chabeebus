@@ -52,11 +52,10 @@ section {
 .heading {
     background-size: cover !important;
     background-position: center !important;
-    padding-top: 10rem;
-    padding-bottom: 15rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
 }
 
 .heading h1 {

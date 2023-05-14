@@ -1,23 +1,24 @@
  <!-- booking section starts -->
- <section class="booking">
-            <h1 class="heading title">book your trip!</h1>
+<section class="admin container booking">
+    <h1 class="heading title mb-3">book your trip!</h1>
+    <div class="content">
+        <form action="book/save" method="post" class="book-form">
+            <div class="flex">
 
-            <form action="book/save" method="post" class="book-form">
-
-                <div class="flex">
-
-                    <div class="inputBox">
-                        <span>Date :</span>
-                        <input type="date" name="reserveDate">
-                    </div>
-
-                    <div class="inputBox">
-                            <span>location :</span>
-                                <input type="text" placeholder="Enter location" name="location">
-                    </div>
-
+                <div class="inputBox">
+                    <span>Date :</span>
+                    <input type="date" name="reserveDate">
                 </div>
-                <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
-            </form>
-        </section>
-        <!-- booking section ends -->
+
+                <div class="inputBox">
+                        <span>location :</span>
+                            <input type="text" placeholder="Enter location" name="location">
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-outline-secondary btn-lg mt-3">Submit</button>
+        </form>
+    </div>
+</section>
+<!-- booking section ends -->
+ 

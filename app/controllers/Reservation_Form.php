@@ -20,25 +20,23 @@ Class Reservation_Form extends Controller {
 
         $urlArray = splitURL();
         $busNo = $urlArray[2];
-        show($busNo);
         $result = [];
         if (isset($busNo)) {
             $sql = 'SELECT bus.bus_number, bus.location, schedules.dept_time, schedules.arrival_time
-                FROM schedules
-                JOIN bus ON schedules.bus_number = bus.bus_number
-                WHERE bus.location = "'. $busNo .'"';
+            FROM schedules
+            JOIN bus ON schedules.bus_number = bus.bus_number
+            WHERE bus.bus_number = '. $busNo .'';
 
-            show($sql);
             $db = new Database();
             $result = $db->read($sql);
-            show($date);
         } else {
             header("Location: {$_SERVER["HTTP_REFERER"]}");
         }
         
         $data['page_title'] = "BookReservation_Form";
         $data['title'] = "Reservation_Form";
-        $data['schedules'] = $result;
+        $data['schedule'] = $result[0];
+        $data['date'] = date($date);
         $this->view($data);
 
         $footer['title'] = 'common/footer';
