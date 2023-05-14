@@ -27,16 +27,23 @@
                                 </div>
                                 <div class="col-6">
                                     <span class="col-7"><strong>Arrival Time: </strong></span>
-                                    <span class="col-5"><?= $schedule->arrival_time ?> </span>
+                                    <span class="col-5"> <?= $schedule->arrival_time ?> </span>
                                 </div>
-                                
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-outline-secondary btn-lg">Select Bus</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-3">
-                            <!-- <div class="img-container">
-                                <img src=<php $row['busImage'] ?> alt="bus-image">
-                            </div> -->
+                            <div class="img-container">
+                                <img src="<?= $schedule->busImage ?>" alt="bus-image">
+                            </div>
                         </div>
+
+
                     </div>
                                                     
                 </div>

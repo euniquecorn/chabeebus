@@ -20,7 +20,7 @@ Class Book_Form extends Controller {
         $location = $urlArray[2];
         $result = [];
         if (isset($location)) {
-            $sql = 'SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time, schedules.price
+            $sql = 'SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time, schedules.price, bus.busImage
                 FROM schedules
                 JOIN bus ON schedules.bus_number = bus.bus_number
                 WHERE bus.location = "'. $location .'"';
