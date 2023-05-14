@@ -1,3 +1,49 @@
-<div class="container">
-    <h1>This is <?=$data['title']?></h1>
+<?php
+    $reservations = $data['result']; 
+?>
+<div class="admin container my-2 p-5">
+    <div class="content">
+        <div class="card">
+            <div class="card-body">
+                <?php if (is_array($reservations) && count($reservations) > 0) : ?>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Passenger Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Departure</th>
+                                <th scope="col">Arrival</th>
+                                <th scope="col">Bus #</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Seat #</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($reservations as $reservation) : ?>
+                            <tr>
+                                <th scope="row"><?= $reservation->reservation_id ?></th>
+                                <td><?= $reservation->passenger_name ?></td>
+                                <td><?= $reservation->dates ?></td>
+                                <td><?= $reservation->dept_time ?></td>
+                                <td><?= $reservation->arrival_time ?></td>
+                                <td><?= $reservation->bus_number ?></td>
+                                <td><?= $reservation->location ?></td>
+                                <td><?= $reservation->price ?></td>
+                                <td><?= $reservation->seat_number ?></td>
+                                <td><?= $reservation->paid ? 'Paid' : '' ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="card my-5 p-3">
+                        <h1 class="text-center">No Reservations Found</h1>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
 </div>
