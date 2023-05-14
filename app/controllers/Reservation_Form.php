@@ -1,11 +1,11 @@
 <?php
-Class Book_Form extends Controller {
+Class Reservation_Form extends Controller {
     function index() {
         $header['title'] = 'common/header';
         $this->view($header);
         
-        $data['page_title'] = "Book_Form";
-        $data['title'] = "Book_Form";
+        $data['page_title'] = "Reservation_Form";
+        $data['title'] = "Reservation_Form";
         $this->view($data);
 
         $footer['title'] = 'common/footer';
@@ -15,22 +15,29 @@ Class Book_Form extends Controller {
     function new() {
         $header['title'] = 'common/header';
         $this->view($header);
+        
+        $date = $_SESSION['date'];
 
-        $location = $_SESSION['location'];         
+        $urlArray = splitURL();
+        $busNo = $urlArray[2];
+        show($busNo);
         $result = [];
-        if (isset($location)) {
-            $sql = 'SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time, schedules.price, bus.busImage
+        if (isset($busNo)) {
+            $sql = 'SELECT bus.bus_number, bus.location, schedules.dept_time, schedules.arrival_time
                 FROM schedules
                 JOIN bus ON schedules.bus_number = bus.bus_number
-                WHERE bus.location = "'. $location .'"';
+                WHERE bus.location = "'. $busNo .'"';
+
+            show($sql);
             $db = new Database();
             $result = $db->read($sql);
+            show($date);
         } else {
             header("Location: {$_SERVER["HTTP_REFERER"]}");
         }
         
-        $data['page_title'] = "Book Form";
-        $data['title'] = "Book_Form";
+        $data['page_title'] = "BookReservation_Form";
+        $data['title'] = "Reservation_Form";
         $data['schedules'] = $result;
         $this->view($data);
 
@@ -42,7 +49,6 @@ Class Book_Form extends Controller {
         $date = $_POST['reserveDate'];
         $location = $_POST['location']; 
         show($location);
-        show($date);
         
         if (isset($location)) {
             // $sql = "SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time

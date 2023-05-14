@@ -13,17 +13,12 @@ Class Book extends Controller {
     }
 
     function save() {
-        $urlArray = splitURL();
-        show($urlArray);
-
-        // $date = $_POST['reserveDate'];
+        $date = $_POST['reserveDate'];
         $location = $_POST['location'];
-        show($location);
         
         if (isset($location)) {
-            // $sql = "DELETE from reservations WHERE reservation_id = ". $_POST['delete'];
-            // $db = new Database();
-            // $result = $db->write($sql);
+            $_SESSION['date'] = $date;
+            $_SESSION['location'] = $location;
             header("Location: /chabeebus/public/Book_Form/new/".$location);
         } else {
             // TODO: ADD TOASTER ERROR MESSAGE

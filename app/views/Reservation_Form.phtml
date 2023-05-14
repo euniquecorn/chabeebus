@@ -1,0 +1,52 @@
+ <!-- booking section starts -->
+ <section class="booking">
+            <h1 class="heading title">Reservation Form</h1>
+
+            <form action="book/save" method="post" class="book-form">
+
+                <div class="flex">
+
+                    <div class="inputBox">
+                        <span>Date :</span>
+                        <input type="date" name="reserveDate" value="<?php  $date ?>" readonly>
+                    </div>
+
+                    <div class="inputBox">
+                            <span>Bus # :</span>
+                            <input type="number" placeholder="Bus number" name="busNo" readonly>
+                    </div>
+
+                    <div class="inputBox">
+                            <span>Location :</span>
+                            <input type="text" placeholder="Enter location" name="location" readonly>
+                    </div>
+                    
+                    <div class="inputBox">
+                            <span>Departure :</span>
+                            <input type="time" placeholder="Departure Time" name="departure" readonly>
+                    </div>
+                    
+                    <div class="inputBox">
+                            <span>Arrival :</span>
+                            <input type="time" placeholder="Arrival Time" name="arrival" readonly>
+                    </div>
+                   
+                    <div class="inputBox">
+                            <span>Arrival :</span>
+                            <input type="time" placeholder="Arrival Time" name="arrival" readonly>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>Seat Number :</span>
+                        <input type="number" name="seatNumber">
+                    </div>
+
+                    <div class="inputBox"></div>
+                    <div class="inputBox"></div>
+                
+
+                </div>
+                <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
+            </form> 
+        </section>
+        <!-- booking section ends -->

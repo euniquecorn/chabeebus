@@ -33,7 +33,9 @@
                             <br/>
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-outline-secondary btn-lg">Select Bus</button>
+                                    <?php echo '<form action="../../Reservation_Form/new/'. $schedule->bus_number .'" method="post">'?>
+                                        <button type="submit" class="btn btn-outline-secondary btn-lg">Select Bus</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
