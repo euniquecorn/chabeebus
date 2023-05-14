@@ -1,3 +1,23 @@
-<div class="container">
-    <h1>This is <?=$data['page_title']?></h1>
-</div>
+ <!-- booking section starts -->
+ <section class="booking">
+            <h1 class="heading title">book your trip!</h1>
+
+            <form action="book/save" method="post" class="book-form">
+
+                <div class="flex">
+
+                    <div class="inputBox">
+                        <span>Date :</span>
+                        <input type="date" name="reserveDate">
+                    </div>
+
+                    <div class="inputBox">
+                            <span>location :</span>
+                                <input type="text" placeholder="Enter location" name="location">
+                    </div>
+
+                </div>
+                <input type="submit" value="submit" class="btn" name="send">
+            </form>
+        </section>
+        <!-- booking section ends -->
