@@ -31,32 +31,23 @@ Class Reservation_Form extends Controller {
             // Seat number
             // $busNo = 1; // Assuming you have a valid bus number
 
-            $sql = "SELECT * FROM reservations
-                    JOIN buses ON reservations.bus_number = buses.bus_number
-                    WHERE buses.bus_number = $busNo";
-
-            $seats = $db->read($sql);
-            // show($sql);
-
-            $availableSeats = [];
-            $occupied = [];
-            foreach ($seats as $idx => $seat) {
-                $occupied[$idx + 1] = $seat->seat_number;
-            }
-
-            for ($i=1; $i <= $seats[0]->capacity; $i++) {
-                $found = array_search($i, $occupied);
-                if (!$found) {
-                    array_push($availableSeats, $i);
-                }
-            }
-            // show($availableSeats);
-
             $sql = 'SELECT buses.capacity, buses.bus_number, buses.location, schedules.dept_time, schedules.arrival_time, schedules.price, schedules.sched_id
                 FROM schedules
                 JOIN buses ON schedules.bus_number = buses.bus_number
                 WHERE buses.bus_number = '. $busNo .'';
             $schedule = $db->read($sql);
+
+            $sql = "SELECT * FROM reservations
+                    JOIN buses ON reservations.bus_number = buses.bus_number
+                    WHERE buses.bus_number = $busNo";
+
+            $seats = $db->read($sql);
+            if (count($seats) == 0) {
+                $seats = $schedule;
+            }
+
+            $availableSeats = getAvailableSeats($seats);
+            // show($availableSeats);
 
         } else {
             header("Location: {$_SERVER["HTTP_REFERER"]}");
