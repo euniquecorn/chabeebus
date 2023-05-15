@@ -7,6 +7,10 @@
     overflow-y: auto;
 }
 
+.c-dashboardInfo .details-container.large {
+    max-height: 30rem;
+}
+
 
 .c-dashboardInfo h2 {
     font-size: large;
