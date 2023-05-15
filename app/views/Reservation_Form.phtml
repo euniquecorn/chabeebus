@@ -1,48 +1,67 @@
  <!-- booking section starts -->
- <?php $schedule = $data['schedule'];?>
- <section class="booking">
-            <h1 class="heading title">Reservation Form</h1>
+ <?php 
+    $schedule = $data['schedule'];
+    $availableSeats = $data['availableSeats'];
+ ?>
 
-            <form action="book/save" method="post" class="book-form">
+ <section class="home container booking mt-5">
+    <div class="content">
+        <h1 class="heading title mb-5">Reservation Form</h1>
 
-                <div class="flex">
+        <form action="book/save" method="post" class="book-form">
 
-                    <div class="inputBox">
-                        <span>Date :</span>
-                        <input type="date" name="reserveDate" value="<?= $data['date'] ?>" readonly>
-                    </div>
+            <div class="flex">
 
-                    <div class="inputBox">
-                            <span>Bus # :</span>
-                            <input type="number" value="<?= $schedule->bus_number ?>" name="busNo" readonly>
-                    </div>
-
-                    <div class="inputBox">
-                            <span>Location :</span>
-                            <input type="text" value = "<?= $schedule->location ?> " name="location" readonly>
-                    </div>
-                    
-                    <div class="inputBox">
-                            <span>Departure :</span>
-                            <input type="time" value="<?= $schedule->dept_time ?>" name="departure" readonly>
-                    </div>
-                    
-                    <div class="inputBox">
-                            <span>Arrival :</span>
-                            <input type="time" value="<?= $schedule->arrival_time ?>" name="arrival" readonly>
-                    </div>
-                   
-                    <div class="inputBox">
-                        <span>Seat Number :</span>
-                        <input type="number" name="seatNumber">
-                    </div>
-
-                    <div class="inputBox"></div>
-                    <div class="inputBox"></div>
-                
-
+                <div class="inputBox">
+                    <span>Date :</span>
+                    <input type="date" name="reserveDate" value="<?= $data['date'] ?>" readonly>
                 </div>
-                <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
-            </form> 
-        </section>
+
+                <div class="inputBox">
+                        <span>Bus # :</span>
+                        <input type="number" value="<?= $schedule->bus_number ?>" name="busNo" readonly>
+                </div>
+
+                <div class="inputBox">
+                        <span>Location :</span>
+                        <input type="text" value = "<?= $schedule->location ?> " name="location" readonly>
+                </div>
+                
+                <div class="inputBox">
+                        <span>Departure :</span>
+                        <input type="time" value="<?= $schedule->dept_time ?>" name="departure" readonly>
+                </div>
+                
+                <div class="inputBox">
+                    <span>Arrival :</span>
+                    <input type="time" value="<?= $schedule->arrival_time ?>" name="arrival" readonly>
+                </div>
+                <div class="inputBox">
+                    <div class="mb-2">Seat Number:</div>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Seat Number</option>
+                        <?php foreach ($availableSeats as $value) : ?>
+                            <option value=" <?= $value ?>"> <?= $value ?> </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                
+                <div class="inputBox">
+                    <div class="mb-2">Payment:</div>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Payment Method</option>
+                            <option value="gcash"> GCash </option>
+                            <option value="atm"> Visa/Mastercard/Bancnet </option>
+                    </select>
+                </div>
+
+                <div class="inputBox"></div>
+                <div class="inputBox"></div>
+
+            </div>
+            <br>
+            <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
+        </form> 
+    </div>            
+</section>
         <!-- booking section ends -->
