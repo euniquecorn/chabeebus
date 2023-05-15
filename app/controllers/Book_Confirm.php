@@ -1,11 +1,11 @@
 <?php
-Class Book_Form extends Controller {
+Class Reservation_Form extends Controller {
     function index() {
         $header['title'] = 'common/header';
         $this->view($header);
         
-        $data['page_title'] = "Book_Form";
-        $data['title'] = "Book_Form";
+        $data['page_title'] = "Reservation_Form";
+        $data['title'] = "Reservation_Form";
         $this->view($data);
 
         $footer['title'] = 'common/footer';
@@ -15,24 +15,13 @@ Class Book_Form extends Controller {
     function new() {
         $header['title'] = 'common/header';
         $this->view($header);
-
-        $location = $_SESSION['location']; 
         
-        $result = [];
-        if (isset($location)) {
-            $sql = 'SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time, schedules.price, bus.busImage
-                FROM schedules
-                JOIN bus ON schedules.bus_number = bus.bus_number
-                WHERE bus.location = "'. $location .'"';
-            $db = new Database();
-            $result = $db->read($sql);
-        } else {
-            header("Location: {$_SERVER["HTTP_REFERER"]}");
-        }
         
-        $data['page_title'] = "Book Form";
-        $data['title'] = "Book_Form";
-        $data['schedules'] = $result;
+        $data['page_title'] = "BookReservation_Form";
+        $data['title'] = "Reservation_Form";
+        $data['schedule'] = $schedule[0];
+        $data['date'] = date($date);
+        $data['availableSeats'] = $availableSeats;
         $this->view($data);
 
         $footer['title'] = 'common/footer';
@@ -42,8 +31,7 @@ Class Book_Form extends Controller {
     function save() {
         $date = $_POST['reserveDate'];
         $location = $_POST['location']; 
-        show($location);
-        show($date);
+        // show($location);
         
         if (isset($location)) {
             // $sql = "SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time

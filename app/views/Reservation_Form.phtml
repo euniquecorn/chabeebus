@@ -2,13 +2,14 @@
  <?php 
     $schedule = $data['schedule'];
     $availableSeats = $data['availableSeats'];
- ?>
+?>
 
  <section class="home container booking mt-5">
     <div class="content">
         <h1 class="heading title mb-5">Reservation Form</h1>
+        <?= show($schedule); ?>
 
-        <form action="book/save" method="post" class="book-form">
+        <form action="../../Book_Confirm/save" method="post" class="book-form">
 
             <div class="flex">
 
@@ -19,7 +20,7 @@
 
                 <div class="inputBox">
                         <span>Bus # :</span>
-                        <input type="number" value="<?= $schedule->bus_number ?>" name="busNo" readonly>
+                        <input type="text" value="<?= $schedule->bus_number ?> " name="busNo" readonly>
                 </div>
 
                 <div class="inputBox">
@@ -36,9 +37,20 @@
                     <span>Arrival :</span>
                     <input type="time" value="<?= $schedule->arrival_time ?>" name="arrival" readonly>
                 </div>
+                
+                <div class="inputBox">
+                    <span>Price :</span>
+                    <input type="int" value="<?= $schedule->price ?> " name="price" readonly>
+                </div>
+                
+                <div class="inputBox">
+                    <span>Passenger Name :</span>
+                    <input type="text" name="passengerName">
+                </div>
+                
                 <div class="inputBox">
                     <div class="mb-2">Seat Number:</div>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="seatNo">
                         <option selected>Seat Number</option>
                         <?php foreach ($availableSeats as $value) : ?>
                             <option value=" <?= $value ?>"> <?= $value ?> </option>
@@ -48,11 +60,15 @@
                 
                 <div class="inputBox">
                     <div class="mb-2">Payment:</div>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="paymentMethod">
                         <option selected>Payment Method</option>
                             <option value="gcash"> GCash </option>
                             <option value="atm"> Visa/Mastercard/Bancnet </option>
                     </select>
+                </div>
+
+                <div class="">                    
+                    <input type="text" value="<?= $schedule->sched_id ?> " name="schedID" hidden>
                 </div>
 
                 <div class="inputBox"></div>
