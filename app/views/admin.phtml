@@ -1,18 +1,76 @@
+<?php
+    $sales = $data['sales'];
+    $busSales = $data['busSales'];
+    $salesToDate = $data['salesToDate'];
+?>
 <div class="admin container my-5">
-    <div class="content row">
-        <div class="col-4">
-            <div class="card p-3" onclick="goto('buses')">
-                <div class="card-body row">
-                    <div class="col-8"><h1>Buses</h1></div>
-                    <div class="col-4"><h1 class="text-end">4</h1></div>
+    <div class="content">
+        <div class="row align-items-stretch">
+            <div class="c-dashboardInfo col-lg-4 col-md-6" onclick="goto('buses')">
+                <div class="wrap">
+                    <h2 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Buses<svg
+                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+                        </svg>
+                    </h2>
+                    <span class="hind-font caption-12 c-dashboardInfo__count"><?= count($busSales) ?></span>
+                    <div class="details-container">
+                        <?php foreach ($busSales as $busSale) : ?>
+                            <div class="card">
+                                <div class="card-body d-flex justify-content-between">
+                                    <div >Bus #: <?= $busSale->bus_number ?></div>
+                                    <div class=""><strong>Php <?= number_format($busSale->total_sales, 2, '.', ',') ?></strong></div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-4">
-            <div class="card p-3" onclick="goto('reservations')">
-                <div class="card-body row">
-                    <div class="col-8"><h1>Reservations</h1></div>
-                    <div class="col-4"><h1 class="text-end">10</h1></div>
+            <div class="c-dashboardInfo col-lg-4 col-md-6" onclick="goto('reservations')">
+                <div class="wrap">
+                    <h2 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Reservations<svg
+                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+                        </svg>
+                    </h2>
+                    <span class="hind-font caption-12 c-dashboardInfo__count"><?= count($data['reservations']) ?></span>
+                    <div class="details-container">
+                        <?php foreach ($data['reservations'] as $reservation) : ?>
+                            <div class="card">
+                                <div class="card-body d-flex justify-content-between">
+                                    <div><strong><?= $reservation->dates ?></strong></div>
+                                    <div><strong> | </strong></div>
+                                    <div>Bus #: <strong><?= $reservation->bus_number ?></strong></div>
+                                    <div><strong> | </strong></div>
+                                    <div class=""><strong>Php <?= number_format($reservation->price, 2, '.', ',') ?></strong></div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="c-dashboardInfo col-lg-4 col-md-6" onclick="goto('reservations')">
+                <div class="wrap">
+                    <h2 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Sales<svg
+                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"> </path>
+                        </svg>
+                    </h2>
+                    <span class="hind-font caption-12 c-dashboardInfo__count">Php <?= number_format($sales->total_sales, 2, '.', ',') ?></span>
+                    <div class="details-container">
+                        <?php foreach ($salesToDate as $toDate) : ?>
+                            <div class="card">
+                                <div class="card-body d-flex justify-content-between">
+                                    <div><strong><?= $toDate->dates ?></strong></div>
+                                    <div><strong> | </strong></div>
+                                    <div class=""><strong>Php <?= number_format($toDate->total_sales, 2, '.', ',') ?></strong></div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
