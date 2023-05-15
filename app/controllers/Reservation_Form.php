@@ -24,16 +24,17 @@ Class Reservation_Form extends Controller {
         $seats = [];
         if (isset($busNo)) {
             $db = new Database();
-            $sql = 'SELECT bus.bus_number, bus.location, schedules.dept_time, schedules.arrival_time
+            $sql = 'SELECT bus.capacity, bus.bus_number, bus.location, schedules.dept_time, schedules.arrival_time, schedules.price, schedules.sched_id
                 FROM schedules
                 JOIN bus ON schedules.bus_number = bus.bus_number
                 WHERE bus.bus_number = '. $busNo .'';
             $schedule = $db->read($sql);
-
+            
             $sql = 'SELECT * FROM reservations
                 JOIN bus ON reservations.bus_number = bus.bus_number
                 WHERE bus.bus_number = '. $busNo .'';
             $seats = $db->read($sql);
+
             $availableSeats = [];
             $occupied = [];
             foreach ($seats as $idx => $seat) {
@@ -47,6 +48,7 @@ Class Reservation_Form extends Controller {
                 }
             }
             // show($availableSeats);
+
         } else {
             header("Location: {$_SERVER["HTTP_REFERER"]}");
         }
@@ -67,18 +69,18 @@ Class Reservation_Form extends Controller {
         $location = $_POST['location']; 
         show($location);
         
-        // if (isset($location)) {
-        //     // $sql = "SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time
-        //     //         FROM schedules
-        //     //         JOIN bus ON schedules.bus_number = bus.bus_number
-        //     //         WHERE bus.location = '$location' "
-        //     // $db = new Database();
-        //     // $result = $db->write($sql);
-        //     header("Location: /chabeebus/public/reservation");
-        // } else {
-        //     // TODO: ADD TOASTER ERROR MESSAGE
-        //     header("Location: {$_SERVER["HTTP_REFERER"]}");
-        // }
+        if (isset($location)) {
+            // $sql = "SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time
+            //         FROM schedules
+            //         JOIN bus ON schedules.bus_number = bus.bus_number
+            //         WHERE bus.location = '$location' "
+            // $db = new Database();
+            // $result = $db->write($sql);
+            header("Location: /chabeebus/public/reservation");
+        } else {
+            // TODO: ADD TOASTER ERROR MESSAGE
+            header("Location: {$_SERVER["HTTP_REFERER"]}");
+        }
 
     }
 
