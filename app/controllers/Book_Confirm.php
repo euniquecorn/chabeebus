@@ -1,11 +1,11 @@
 <?php
-Class Reservation_Form extends Controller {
+Class Book_Confirm extends Controller {
     function index() {
         $header['title'] = 'common/header';
         $this->view($header);
         
-        $data['page_title'] = "Reservation_Form";
-        $data['title'] = "Reservation_Form";
+        $data['page_title'] = "Book_Confirm";
+        $data['title'] = "Book_Confirm";
         $this->view($data);
 
         $footer['title'] = 'common/footer';
@@ -13,39 +13,37 @@ Class Reservation_Form extends Controller {
     }
 
     function new() {
+    }
+
+    function save() {
         $header['title'] = 'common/header';
         $this->view($header);
         
-        
-        $data['page_title'] = "BookReservation_Form";
-        $data['title'] = "Reservation_Form";
-        $data['schedule'] = $schedule[0];
-        $data['date'] = date($date);
-        $data['availableSeats'] = $availableSeats;
+        $data['page_title'] = "Book_Confirm";
+        $data['title'] = "Book_Confirm";
         $this->view($data);
 
         $footer['title'] = 'common/footer';
         $this->view($footer);
-    }
 
-    function save() {
         $date = $_POST['reserveDate'];
+        $busNo = $_POST['busNo'];
         $location = $_POST['location']; 
-        // show($location);
-        
-        if (isset($location)) {
-            // $sql = "SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time
-            //         FROM schedules
-            //         JOIN bus ON schedules.bus_number = bus.bus_number
-            //         WHERE bus.location = '$location' "
-            // $db = new Database();
-            // $result = $db->write($sql);
-            header("Location: /chabeebus/public/reservation");
-        } else {
-            // TODO: ADD TOASTER ERROR MESSAGE
-            header("Location: {$_SERVER["HTTP_REFERER"]}");
-        }
+        $departure = $_POST['departure']; 
+        $arrival = $_POST['arrival']; 
+        $price = $_POST['price']; 
+        $passengerName = $_POST['passengerName']; 
+        $seatNo = $_POST['seatNo']; 
+        $schedID = $_POST['schedID']; 
+        show($date);
 
-    }
+        
+        $sql = "INSERT INTO reservations (passenger_name, dates, sched_id, dept_time, arrival_time, bus_number, location, price, seat_number, paid)
+        VALUES ('$passengerName', '$date', $schedID, '$departure', '$arrival', $busNo, '$location', $price, $seatNo, True);";
+        $db = new Database();
+        $result = $db->write($sql);
+
+    
+    }   
 
 }
