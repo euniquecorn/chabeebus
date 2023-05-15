@@ -47,15 +47,8 @@ Class Book_Form extends Controller {
         show($date);
         
         if (isset($location)) {
-            // $sql = "SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time
-            //         FROM schedules
-            //         JOIN bus ON schedules.bus_number = bus.bus_number
-            //         WHERE bus.location = '$location' "
-            // $db = new Database();
-            // $result = $db->write($sql);
             header("Location: /chabeebus/public/reservation");
         } else {
-            // TODO: ADD TOASTER ERROR MESSAGE
             header("Location: {$_SERVER["HTTP_REFERER"]}");
         }
 

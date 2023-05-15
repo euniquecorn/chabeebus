@@ -1,0 +1,65 @@
+<?php 
+    // echo "Book CONFIRM PHTML";
+    $date = $_POST['reserveDate'];
+    $busNo = $_POST['busNo'];
+    $location = $_POST['location']; 
+    $departure = $_POST['departure']; 
+    $arrival = $_POST['arrival']; 
+    $price = $_POST['price']; 
+    $passengerName = $_POST['passengerName']; 
+    $seatNo = $_POST['seatNo']; 
+    $schedID = $_POST['schedID']; 
+?>
+
+<div class="container my-5">
+<h1 class="mb-5">Booking Confirmed</h1>
+    <div class="card bg-light bus-item mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-9 p-5">
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="col-7"><strong>Date: </strong></span>
+                            <span class="col-5"><?= $date ?> </span>
+                        </div>
+                         <div class="col-6">
+                            <span class="col-7"><strong>Passenger Name: </strong></span>
+                            <span class="col-5"> <?= $passengerName ?> </span>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="col-7"><strong>Departure:</strong></span>
+                            <span class="col-5"><?= $departure ?> </span>
+                        </div>
+                        <div class="col-6">
+                            <span class="col-7"><strong>Seat Number: </strong></span>
+                            <span class="col-5"><?= $seatNo ?></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="col-7"><strong>Arrival Time: </strong></span>
+                            <span class="col-5"> <?= $arrival ?> </span>
+                        </div>
+                        <div class="col-6">
+                            <span class="col-7"><strong>Bus No: </strong></span>
+                            <span class="col-5"><?= $busNo ?> </span>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                       
+                    </div>
+                </div>
+                <div class="col-3">
+                   
+                </div>
+
+
+            </div>
+                                            
+        </div>
+    </div>
+</div>
+
