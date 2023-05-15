@@ -22,6 +22,7 @@ Class Admin extends Controller {
             ORDER BY r.dates DESC
 
         ");
+        $data['schedules'] = $db->read("Select * from schedules");
 
         $data['page_title'] = "Admin";
         $data['title'] = 'admin';
