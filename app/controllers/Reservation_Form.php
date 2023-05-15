@@ -22,18 +22,21 @@ Class Reservation_Form extends Controller {
         $busNo = $urlArray[2];
         $schedule = [];
         $seats = [];
+
+
+
         if (isset($busNo)) {
             $db = new Database();
-            $sql = 'SELECT bus.capacity, bus.bus_number, bus.location, schedules.dept_time, schedules.arrival_time, schedules.price, schedules.sched_id
-                FROM schedules
-                JOIN bus ON schedules.bus_number = bus.bus_number
-                WHERE bus.bus_number = '. $busNo .'';
-            $schedule = $db->read($sql);
-            
-            $sql = 'SELECT * FROM reservations
-                JOIN bus ON reservations.bus_number = bus.bus_number
-                WHERE bus.bus_number = '. $busNo .'';
+
+            // Seat number
+            // $busNo = 1; // Assuming you have a valid bus number
+
+            $sql = "SELECT * FROM reservations
+                    JOIN buses ON reservations.bus_number = buses.bus_number
+                    WHERE buses.bus_number = $busNo";
+
             $seats = $db->read($sql);
+            // show($sql);
 
             $availableSeats = [];
             $occupied = [];
@@ -48,6 +51,12 @@ Class Reservation_Form extends Controller {
                 }
             }
             // show($availableSeats);
+
+            $sql = 'SELECT buses.capacity, buses.bus_number, buses.location, schedules.dept_time, schedules.arrival_time, schedules.price, schedules.sched_id
+                FROM schedules
+                JOIN buses ON schedules.bus_number = buses.bus_number
+                WHERE buses.bus_number = '. $busNo .'';
+            $schedule = $db->read($sql);
 
         } else {
             header("Location: {$_SERVER["HTTP_REFERER"]}");

@@ -42,6 +42,7 @@ Class Book_Confirm extends Controller {
         VALUES ('$passengerName', '$date', $schedID, '$departure', '$arrival', $busNo, '$location', $price, $seatNo, True);";
         $db = new Database();
         $result = $db->write($sql);
+        show($sql);
 
     
     }   
