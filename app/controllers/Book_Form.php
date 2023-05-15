@@ -20,10 +20,11 @@ Class Book_Form extends Controller {
         
         $result = [];
         if (isset($location)) {
-            $sql = 'SELECT bus.bus_number, schedules.dept_time, schedules.arrival_time, schedules.price, bus.busImage
-                FROM schedules
-                JOIN bus ON schedules.bus_number = bus.bus_number
-                WHERE bus.location = "'. $location .'"';
+            $sql = 'SELECT b.bus_number, s.dept_time, s.arrival_time, s.price, b.busImage
+                FROM schedules s
+                JOIN buses b ON s.bus_number = b.bus_number
+                WHERE b.location = "'. $location .'"';
+
             $db = new Database();
             $result = $db->read($sql);
         } else {
